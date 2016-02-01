@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_avroproducerforkafka" default="compile.module.avroproducerforkafka">
+  <dirname property="module.avroproducerforkafka.basedir" file="${ant.file.module_avroproducerforkafka}"/>
+  
+  <property name="module.jdk.home.avroproducerforkafka" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.avroproducerforkafka" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.avroproducerforkafka" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.avroproducerforkafka" value="-encoding UTF-8 -source 1.5 -target 1.5 ${compiler.args}"/>
+  
+  <property name="avroproducerforkafka.output.dir" value="${module.avroproducerforkafka.basedir}/target/classes"/>
+  <property name="avroproducerforkafka.testoutput.dir" value="${module.avroproducerforkafka.basedir}/target/test-classes"/>
+  
+  <path id="avroproducerforkafka.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="avroproducerforkafka.module.production.classpath">
+    <path refid="${module.jdk.classpath.avroproducerforkafka}"/>
+    <path refid="library.maven:_org.apache.avro:avro:1.7.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.paranamer:paranamer:2.3.classpath"/>
+    <path refid="library.maven:_org.xerial.snappy:snappy-java:1.0.5.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-compress:1.4.1.classpath"/>
+    <path refid="library.maven:_org.tukaani:xz:1.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.4.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka-clients:0.8.2.1.classpath"/>
+    <path refid="library.maven:_net.jpountz.lz4:lz4:1.2.0.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka_2.10:0.8.2.1.classpath"/>
+    <path refid="library.maven:_com.yammer.metrics:metrics-core:2.2.0.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-library:2.10.4.classpath"/>
+    <path refid="library.maven:_org.apache.zookeeper:zookeeper:3.4.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.6.1.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_junit:junit:3.8.1.classpath"/>
+    <path refid="library.maven:_net.sf.jopt-simple:jopt-simple:3.2.classpath"/>
+    <path refid="library.maven:_com.101tec:zkclient:0.3.classpath"/>
+    <path refid="library.maven:_org.apache.flume:flume-ng-sdk:1.6.0.classpath"/>
+    <path refid="library.maven:_org.apache.avro:avro-ipc:1.7.4.classpath"/>
+    <path refid="library.maven:_org.mortbay.jetty:jetty:6.1.26.classpath"/>
+    <path refid="library.maven:_org.mortbay.jetty:jetty-util:6.1.26.classpath"/>
+    <path refid="library.maven:_org.apache.velocity:velocity:1.7.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.5.12.final.classpath"/>
+    <path refid="library.maven:_org.apache.thrift:libthrift:0.9.0.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.1.3.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.4.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.1.3.classpath"/>
+  </path>
+  
+  <path id="avroproducerforkafka.runtime.production.module.classpath">
+    <pathelement location="${avroproducerforkafka.output.dir}"/>
+    <path refid="library.maven:_org.apache.avro:avro:1.7.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.paranamer:paranamer:2.3.classpath"/>
+    <path refid="library.maven:_org.xerial.snappy:snappy-java:1.0.5.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-compress:1.4.1.classpath"/>
+    <path refid="library.maven:_org.tukaani:xz:1.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.4.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka-clients:0.8.2.1.classpath"/>
+    <path refid="library.maven:_net.jpountz.lz4:lz4:1.2.0.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka_2.10:0.8.2.1.classpath"/>
+    <path refid="library.maven:_com.yammer.metrics:metrics-core:2.2.0.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-library:2.10.4.classpath"/>
+    <path refid="library.maven:_org.apache.zookeeper:zookeeper:3.4.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.6.1.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_junit:junit:3.8.1.classpath"/>
+    <path refid="library.maven:_net.sf.jopt-simple:jopt-simple:3.2.classpath"/>
+    <path refid="library.maven:_com.101tec:zkclient:0.3.classpath"/>
+    <path refid="library.maven:_org.apache.flume:flume-ng-sdk:1.6.0.classpath"/>
+    <path refid="library.maven:_org.apache.avro:avro-ipc:1.7.4.classpath"/>
+    <path refid="library.maven:_org.mortbay.jetty:jetty:6.1.26.classpath"/>
+    <path refid="library.maven:_org.mortbay.jetty:jetty-util:6.1.26.classpath"/>
+    <path refid="library.maven:_org.apache.velocity:velocity:1.7.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.5.12.final.classpath"/>
+    <path refid="library.maven:_org.apache.thrift:libthrift:0.9.0.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.1.3.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.4.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.1.3.classpath"/>
+  </path>
+  
+  <path id="avroproducerforkafka.module.classpath">
+    <path refid="${module.jdk.classpath.avroproducerforkafka}"/>
+    <pathelement location="${avroproducerforkafka.output.dir}"/>
+    <path refid="library.maven:_org.apache.avro:avro:1.7.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.paranamer:paranamer:2.3.classpath"/>
+    <path refid="library.maven:_org.xerial.snappy:snappy-java:1.0.5.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-compress:1.4.1.classpath"/>
+    <path refid="library.maven:_org.tukaani:xz:1.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.4.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka-clients:0.8.2.1.classpath"/>
+    <path refid="library.maven:_net.jpountz.lz4:lz4:1.2.0.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka_2.10:0.8.2.1.classpath"/>
+    <path refid="library.maven:_com.yammer.metrics:metrics-core:2.2.0.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-library:2.10.4.classpath"/>
+    <path refid="library.maven:_org.apache.zookeeper:zookeeper:3.4.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.6.1.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_junit:junit:3.8.1.classpath"/>
+    <path refid="library.maven:_net.sf.jopt-simple:jopt-simple:3.2.classpath"/>
+    <path refid="library.maven:_com.101tec:zkclient:0.3.classpath"/>
+    <path refid="library.maven:_org.apache.flume:flume-ng-sdk:1.6.0.classpath"/>
+    <path refid="library.maven:_org.apache.avro:avro-ipc:1.7.4.classpath"/>
+    <path refid="library.maven:_org.mortbay.jetty:jetty:6.1.26.classpath"/>
+    <path refid="library.maven:_org.mortbay.jetty:jetty-util:6.1.26.classpath"/>
+    <path refid="library.maven:_org.apache.velocity:velocity:1.7.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.5.12.final.classpath"/>
+    <path refid="library.maven:_org.apache.thrift:libthrift:0.9.0.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.1.3.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.4.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.1.3.classpath"/>
+  </path>
+  
+  <path id="avroproducerforkafka.runtime.module.classpath">
+    <pathelement location="${avroproducerforkafka.testoutput.dir}"/>
+    <pathelement location="${avroproducerforkafka.output.dir}"/>
+    <path refid="library.maven:_org.apache.avro:avro:1.7.7.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.paranamer:paranamer:2.3.classpath"/>
+    <path refid="library.maven:_org.xerial.snappy:snappy-java:1.0.5.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-compress:1.4.1.classpath"/>
+    <path refid="library.maven:_org.tukaani:xz:1.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.4.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka-clients:0.8.2.1.classpath"/>
+    <path refid="library.maven:_net.jpountz.lz4:lz4:1.2.0.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka_2.10:0.8.2.1.classpath"/>
+    <path refid="library.maven:_com.yammer.metrics:metrics-core:2.2.0.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-library:2.10.4.classpath"/>
+    <path refid="library.maven:_org.apache.zookeeper:zookeeper:3.4.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.6.1.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_junit:junit:3.8.1.classpath"/>
+    <path refid="library.maven:_net.sf.jopt-simple:jopt-simple:3.2.classpath"/>
+    <path refid="library.maven:_com.101tec:zkclient:0.3.classpath"/>
+    <path refid="library.maven:_org.apache.flume:flume-ng-sdk:1.6.0.classpath"/>
+    <path refid="library.maven:_org.apache.avro:avro-ipc:1.7.4.classpath"/>
+    <path refid="library.maven:_org.mortbay.jetty:jetty:6.1.26.classpath"/>
+    <path refid="library.maven:_org.mortbay.jetty:jetty-util:6.1.26.classpath"/>
+    <path refid="library.maven:_org.apache.velocity:velocity:1.7.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.5.12.final.classpath"/>
+    <path refid="library.maven:_org.apache.thrift:libthrift:0.9.0.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.1.3.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.4.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.1.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.avroproducerforkafka">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.avroproducerforkafka">
+    <patternset refid="excluded.from.module.avroproducerforkafka"/>
+  </patternset>
+  
+  <path id="avroproducerforkafka.module.sourcepath">
+    <dirset dir="${module.avroproducerforkafka.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="avroproducerforkafka.module.test.sourcepath">
+    <dirset dir="${module.avroproducerforkafka.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.avroproducerforkafka" depends="compile.module.avroproducerforkafka.production,compile.module.avroproducerforkafka.tests" description="Compile module AvroProducerForKafka"/>
+  
+  <target name="compile.module.avroproducerforkafka.production" depends="register.custom.compilers" description="Compile module AvroProducerForKafka; production classes">
+    <mkdir dir="${avroproducerforkafka.output.dir}"/>
+    <javac2 destdir="${avroproducerforkafka.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.avroproducerforkafka}/javac">
+      <compilerarg line="${compiler.args.avroproducerforkafka}"/>
+      <bootclasspath refid="avroproducerforkafka.module.bootclasspath"/>
+      <classpath refid="avroproducerforkafka.module.production.classpath"/>
+      <src refid="avroproducerforkafka.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.avroproducerforkafka"/>
+    </javac2>
+    
+    <copy todir="${avroproducerforkafka.output.dir}">
+      <fileset dir="${module.avroproducerforkafka.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.avroproducerforkafka.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.avroproducerforkafka.tests" depends="register.custom.compilers,compile.module.avroproducerforkafka.production" description="compile module AvroProducerForKafka; test classes" unless="skip.tests">
+    <mkdir dir="${avroproducerforkafka.testoutput.dir}"/>
+    <javac2 destdir="${avroproducerforkafka.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.avroproducerforkafka}/javac">
+      <compilerarg line="${compiler.args.avroproducerforkafka}"/>
+      <bootclasspath refid="avroproducerforkafka.module.bootclasspath"/>
+      <classpath refid="avroproducerforkafka.module.classpath"/>
+      <src refid="avroproducerforkafka.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.avroproducerforkafka"/>
+    </javac2>
+    
+    <copy todir="${avroproducerforkafka.testoutput.dir}">
+      <fileset dir="${module.avroproducerforkafka.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.avroproducerforkafka" description="cleanup module">
+    <delete dir="${avroproducerforkafka.output.dir}"/>
+    <delete dir="${avroproducerforkafka.testoutput.dir}"/>
+  </target>
+</project>
